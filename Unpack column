@@ -1,0 +1,43 @@
+Option Explicit
+Dim pasteCell As String
+Dim down As Integer
+
+Sub sort()
+
+Application.ScreenUpdating = False
+
+down = 0
+
+ActiveSheet.Range("B2").Select
+
+Do While ActiveCell.Value <> ""
+
+     Do While ActiveCell.Value <> ""
+
+          pasteCell = ActiveCell.Address
+
+          Call copyval(ActiveCell.Value)
+
+          ActiveCell.Offset(1,0).Select
+
+     Loop
+
+     ActiveCell.Offset(-4,1).Select
+
+Loop
+
+Application.ScreenUpdating = True
+
+End Sub
+
+Function copyVal(cellVal as Double)
+
+     Range("G2").Offset(down,0).Select
+
+     ActiveCell.Value = cellVal
+
+     down = down + 1
+
+     Range(pasteCell).Select
+
+End Function
