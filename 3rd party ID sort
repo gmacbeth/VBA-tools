@@ -1,0 +1,63 @@
+Option Explicit
+Dim securid As String
+Dim cellsdown As Integer
+Dim cellsover As Integer
+Dim currentcellval as Double
+
+Sub sort()
+
+Range("B2").Select
+
+Do While ActiveCell.Value <> ""
+
+     securid = ActiveCell.Value
+
+     For cellsover = 1 To 4
+
+          currentcellval = ActiveCell.Offset(0, cellsover).Value
+
+          Call populate(currentcellval, cellsdown)
+
+          cellsdown = cellsdown + 1
+
+     Next cellsover
+
+     ActiveCell.Offset(1,0).Select
+
+Loop
+
+End Sub
+
+Private Function populate(currentcellval As Double, cellsdown as Long)
+
+Dim fedcode as String
+
+fedcode = mdrms(cellsover)
+
+Range("H1"). Offset(cellsdown,0).Value = fedcode
+
+Range("I1").Offset(cellsdown,0).Value = securid
+
+Range("J1"). Offset(cellsdown,0).Value = currentcellval
+
+End Function
+
+Private Function mdrms(cellsover As Integer) As String
+
+Select Case cellsover
+
+Case 1:
+     mdrms = "CASCP087"
+
+Case 2:
+     mdrms = "CPSCN234"
+
+Case 3:
+     mdrms = "CPSCN235"
+
+Case4:
+     mdrms = "CPSCP091"
+
+End Select
+
+End Function
