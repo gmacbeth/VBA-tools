@@ -1,0 +1,21 @@
+Option Explicit
+
+Sub distinct()
+
+ActiveSheet.Range("A2").Select
+
+So While ActiveCell.Value <> ""
+
+  If ActiveCell.Value = ActiveCell.Offset(-1,0).Value Then
+  
+      ActiveCell.EntireRow.Delete
+      
+  Else
+  
+      ActiveCell.Offset(1,0).Select
+      
+  End If
+  
+Loop
+
+End Sub
