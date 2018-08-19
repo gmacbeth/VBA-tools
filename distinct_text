@@ -4,7 +4,7 @@ Sub distinct()
 
 ActiveSheet.Range("A2").Select
 
-So While ActiveCell.Value <> ""
+Do While ActiveCell.Value <> ""
 
   If ActiveCell.Value = ActiveCell.Offset(-1,0).Value Then
   
